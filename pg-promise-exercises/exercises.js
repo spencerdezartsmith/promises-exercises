@@ -5,7 +5,7 @@ const postgresConfig = {
   host: 'localhost',
   port: 5432,
   database: 'pg-promise-exercises',
-  user: '<change-this-to-your-username>', // replace this with your username
+  user: 'spencerdezartsmith', // replace this with your username
   password: '' //  replace this if you have set a password for your username (this is unlikely)
 };
 
@@ -27,7 +27,7 @@ const db = pg(postgresConfig);
 
 
 
-const allBooks = db.any('select * from books')
+const allBooks = db.any('select * from books limit 15')
 /* This is calling the `then` function on the `allBooks` promise, and checks if
    we get back 15 rows. This assertion will fail. Make it PASS!*/
 allBooks.then(books => {

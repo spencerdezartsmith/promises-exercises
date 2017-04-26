@@ -230,7 +230,15 @@ bookTitlesWithMultipleEditions.then(books => {
      {title: 'The Cat in the Hat', first_name: 'Theodor Seuss', last_name: 'Geisel'}]
 
 */
-let findStockedBooks; // IMPLEMENT THIS FUNCTION
+let findStockedBooks = db.any('select authors.first_name, authors.last_name, books.title from authors inner join books on authors.id = books.author_id inner join editions on books.id = editions.book_id inner join daily_inventory on editions.isbn = daily_inventory.isbn where is_stocked = TRUE')
+
+findStockedBooks.then(books => {
+  assert.deepEqual(books.length, 2)
+  assert.deepEqual(books[0].title, 'Dune')
+  assert.deepEqual(books[1].first_name, 'Theodor Seuss')
+}).catch(err => {
+  console.log('You are a good person, the function just doesnt behave as expected.', error);
+})
 
 /* --------End of Exercise 7---------------- */
 

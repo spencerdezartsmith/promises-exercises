@@ -55,7 +55,7 @@ allBooks.then(books => {
 
 */
 
-let firstTenBooks; // = .... IMPLEMENT THIS FUNCTION
+let firstTenBooks = db.any('select title from books')
 firstTenBooks.then(books => {
   assert(books.length, 10)
 }).catch(error => {

@@ -9,4 +9,4 @@ const onReject = (error) => {
 };
 
 promise
-  .then((val) => console.log(val), (val) => onReject(val));
+  .then(console.log, onReject);

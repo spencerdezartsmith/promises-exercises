@@ -27,11 +27,11 @@ const db = pg(postgresConfig);
 
 
 
-const allBooks = db.any('select * from books limit 15')
+const allBooks = db.any('select * from books')
 /* This is calling the `then` function on the `allBooks` promise, and checks if
    we get back 15 rows. This assertion will fail. Make it PASS!*/
 allBooks.then(books => {
-  assert.deepEqual(books.length, 20)
+  assert.deepEqual(books.length, 15)
 }).catch(error => {
   console.log('Dang, my assertion failed.', error);
 });
@@ -83,7 +83,7 @@ firstTenBooks.then(books => {
 
 */
 
-let findAuthorsOrderedByLastName; // = .... IMPLEMENT THIS FUNCTION
+let findAuthorsOrderedByLastName = db.any('select * from authors order by last_name')
 findAuthorsOrderedByLastName.then(authors => {
   assert.deepEqual(authors.length, 19)
   assert.deepEqual(authors[0].last_name, 'Alcott')
@@ -128,7 +128,16 @@ findAuthorsOrderedByLastName.then(authors => {
    {first_name: 'Theodor Seuss', last_name: 'Geisel', title: 'Bartholomew and the Oobleck'}
    {first_name: 'Theodor Seuss', last_name: 'Geisel', title: 'The Cat in the Hat'}]
 */
-let findBookAuthors; // IMPLEMENT THIS FUNCTION
+let findBookAuthors = db.any(
+  'select authors.first_name, authors.last_name, books.title from authors inner join books on authors.id = books.author_id')
+
+findBookAuthors.then(authors => {
+	assert.deepEqual(authors.length, 15)
+  assert.deepEqual(authors[0].first_name, 'John')
+  assert.deepEqual(authors[authors.length - 1].last_name, 'Geisel')
+}).catch(error => {
+	console.log('You are a good person, the function just doesnt behave as expected.', error);
+});
 
 /* --------End of Exercise 4---------------- */
 

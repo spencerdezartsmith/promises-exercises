@@ -38,10 +38,6 @@ allBooks.then(books => {
 
 /* --------End of Exercise 1---------------- */
 
-
-
-
-
 /* -----------------------------------------
            Exercise 2
    -----------------------------------------
@@ -165,8 +161,13 @@ findBookAuthors.then(authors => {
 
 
 */
-let authorIdWithTwoBooks; // IMPLEMENT THIS FUNCTION
+let authorIdWithTwoBooks = db.any('select author_id from books group by author_id having (count (author_id) > 1)' )
 
+authorIdWithTwoBooks.then(authors => {
+  assert.deepEqual(authors.length, 2)
+}).catch(error => {
+	console.log('You are a good person, the function just doesnt behave as expected.', error);
+});
 /* --------End of Exercise 5---------------- */
 
 
@@ -195,7 +196,14 @@ let authorIdWithTwoBooks; // IMPLEMENT THIS FUNCTION
       {title: 'The Tell-Tale Heart'}]
 
 */
-let bookTitlesWithMultipleEditions; // IMPLEMENT THIS FUNCTION
+let bookTitlesWithMultipleEditions = db.any('select books.title from books inner join editions on books.id = editions.book_id group by books.title having (count (editions.book_id) > 1)')
+
+bookTitlesWithMultipleEditions.then(books => {
+  assert.deepEqual(books.length, 5)
+  assert.deepEqual(books[0].title, 'The Shining')
+}).catch(error => {
+	console.log('You are a good person, the function just doesnt behave as expected.', error);
+});
 
 /* --------End of Exercise 6---------------- */
 

@@ -1,10 +1,8 @@
-'use strict'
-
-var promise = new Promise((fulfill, reject) => {
+const promise = new Promise((fulfill) => {
 	setTimeout(() => {
-		fulfill('FULFILLED!')
+		fulfill('FULFILLED!');
 	}, 300);
 });
 
 promise
-	.then(console.log)
+	.then(console.log);

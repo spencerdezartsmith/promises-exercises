@@ -1,9 +1,8 @@
-const attachTitle = (title) => {
-	return `DR. ${title}`
-};
+const attachTitle = title => `DR. ${title}`;
 
-const fulfilledPromise = Promise.resolve('MANHATTAN')
+
+const fulfilledPromise = Promise.resolve('MANHATTAN');
 
 fulfilledPromise
 	.then(attachTitle)
-	.then(console.log)
+	.then(console.log);

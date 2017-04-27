@@ -1,11 +1,11 @@
 const promise = new Promise((fulfill, reject) => {
 	setTimeout(() => {
-		reject(new Error('REJECTED!'))
-	}, 300)
-})
+		reject(new Error('REJECTED!'));
+	}, 300);
+});
 
 const onReject = (error) => {
-  console.log(error.message);
+	console.log(error.message);
 };
 
 promise

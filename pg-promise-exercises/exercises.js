@@ -32,9 +32,7 @@ const allBooks = db.any('select * from books')
    we get back 15 rows. This assertion will fail. Make it PASS!*/
 allBooks.then(books => {
   assert.deepEqual(books.length, 15)
-}).catch(error => {
-  console.log('Dang, my assertion failed.', error);
-});
+}).catch(error => console.log('Dang, my assertion failed.', error));
 
 /* --------End of Exercise 1---------------- */
 
@@ -54,9 +52,7 @@ allBooks.then(books => {
 let firstTenBooks = db.any('select title from books')
 firstTenBooks.then(books => {
   assert(books.length, 10)
-}).catch(error => {
-  console.log('Whoops, my function doesnt behave as expected.', error);
-});
+}).catch(error => console.log('Whoops, my function doesnt behave as expected.', error));
 
 /* --------End of Exercise 2---------------- */
 

@@ -1,3 +1,3 @@
 first()
   .then(second)
-  .then(console.log)
+  .then(console.log);

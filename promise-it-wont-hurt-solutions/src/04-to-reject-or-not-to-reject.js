@@ -1,6 +1,6 @@
 const promise = new Promise((fulfill, reject) => {
-	fulfill('I FIRED')
-	reject(new Error('I DID NOT FIRE'))
+	fulfill('I FIRED');
+	reject(new Error('I DID NOT FIRE'));
 });
 
 const onRejected = (error) => {
@@ -8,4 +8,4 @@ const onRejected = (error) => {
 };
 
 promise
-	.then(console.log, onRejected)
+	.then(console.log, onRejected);

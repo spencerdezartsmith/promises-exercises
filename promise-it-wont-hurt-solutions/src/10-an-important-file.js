@@ -1,11 +1,11 @@
 const alwaysThrows = () => {
-  throw new Error('OH NOES');
+	throw new Error('OH NOES');
 };
 
 const iterate = (num) => {
-  console.log(num)
-  return num + 1
-}
+	console.log(num);
+	return num + 1;
+};
 
 Promise.resolve(iterate(1))
   .then(iterate)
@@ -18,4 +18,4 @@ Promise.resolve(iterate(1))
   .then(iterate)
   .then(iterate)
   .then(iterate)
-  .then(null, console.log)
+  .then(null, console.log);

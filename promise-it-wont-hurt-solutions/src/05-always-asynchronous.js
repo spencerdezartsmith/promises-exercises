@@ -1,8 +1,8 @@
 const promise = new Promise((fulfill) => {
-	fulfill('PROMISE VALUE');
+  fulfill('PROMISE VALUE');
 });
 
 promise
-	.then(console.log);
+  .then(console.log);
 
 console.log('MAIN PROGRAM');

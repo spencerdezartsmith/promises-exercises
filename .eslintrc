@@ -1,0 +1,10 @@
+{
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    },
+  "rules": {
+      "no-console": 0,
+      "arrow-body-style": ["error", "as-needed"]
+    }
+}

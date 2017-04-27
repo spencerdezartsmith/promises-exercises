@@ -1,9 +1,8 @@
 const timeOut = new Promise((resolve, reject) => {
 	setTimeout(() => {
-		resolve();
-	});
+		resolve('TIMED OUT!');
+	}, 300);
 });
 
 timeOut
-	.then(() => console.log('TIMED OUT!'))
-	.catch(() => console.log('WHOOPS, TRY AGAIN!'))
+	.then(console.log)
